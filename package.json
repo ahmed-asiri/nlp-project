@@ -1,0 +1,14 @@
+{
+  "name": "nlp-project",
+  "version": "1.0.0",
+  "description": "this project is for interprut the user paragraph to analyze it and return what the feeling of it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nlp"
+  ],
+  "author": "Ahmed Asiri",
+  "license": "ISC"
+}
