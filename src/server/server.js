@@ -12,21 +12,28 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-
+app.use("/", express.static( "/../client/views/index.html"));
 var textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
 
-  textapi.classify({
-    text: 'study software information technology'
-  }, function(error, response) {
-    if (error === null) {
-      response['categories'].forEach(function(c) {
-        console.log(c);
+
+app.get("/nlp", (req, res) => {
+    textapi.classify({
+        url: 'http://techcrunch.com/2015/07/16/microsoft-will-never-give-up-on-mobile'
+      }, function(error, response) {
+        if (error === null) {
+          response['categories'].forEach(function(c) {
+            res.send(c);
+            console.log(c);
+          });
+        }
       });
-    }
-  });
+    
+});
+
+
 const port = process.env.PORT || 5000;
 
 app.listen(3000, () => console.log(`Listening on port ${process.env.PORT}`));
