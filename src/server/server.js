@@ -12,7 +12,8 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use("/", express.static( "/../client/views/index.html"));
+app.use("/dist", express.static( __dirname + "/../../dist"));
+app.use("/", express.static( __dirname + "/../client/views"));
 var textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
@@ -30,7 +31,6 @@ app.get("/nlp", (req, res) => {
           });
         }
       });
-    
 });
 
 
