@@ -1,11 +1,16 @@
 const path = require("path");
 const webpack = require("webpack");
+const common = require("./webpack.common");
+const {merge} = require("webpack-merge");
 
-
-module.exports = {
-    entry: "./src/client/index.js",
+module.exports = merge(common, {
+    mode: "development",
     output: {
-        filename: "main[contenthash].js",
-        path: path.resolve(__dirname, "dist")
+        filename: "main.js",
+        path: path.resolve(__dirname, "dist/assets")
+    },    
+    devServer: {
+        contentBase: "./dist",
+        open: true
     }
-}
+});

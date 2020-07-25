@@ -4,12 +4,11 @@
   "description": "this project is for interprut the user paragraph to analyze it and return what the feeling of it",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
-    "dev": "webpack-dev-server"
+    "start": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "dev:start": "webpack-dev-server --config webpack.dev.js"
   },
-  "keywords": [
-    "nlp"
-  ],
+  "keywords": [],
   "author": "Ahmed Asiri",
   "license": "ISC",
   "dependencies": {
@@ -34,6 +33,7 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.0.9",
     "workbox-webpack-plugin": "^5.1.3"
   }
 }
