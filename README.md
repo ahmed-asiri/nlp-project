@@ -39,3 +39,12 @@ to start running the server app on **port 3000**.
 article or Blog URL in the input field on the right hand of the HTML document.
 
 6- you will get the result od what it's about on the left hand.
+
+
+#### NOTE: some of URL, the API cannot analyze it, it's problem with API for accessing some URL's, there is example of working URL's:
+
+- https://www.google.com
+- https://www.youtube.com/
+- https://github.com/
+- https://mail.google.com/
+
