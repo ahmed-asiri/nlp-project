@@ -11,23 +11,22 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use("/dist", express.static( __dirname + "/../../dist"));
-app.use("/", express.static( __dirname + "/../client/views"));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use("/", express.static( __dirname + "/../../dist"));
 var textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
 
-
-app.get("/nlp", (req, res) => {
+app.post("/nlp", (req, res) => {
     textapi.classify({
-        url: 'http://techcrunch.com/2015/07/16/microsoft-will-never-give-up-on-mobile'
+        url: req.body.url
       }, function(error, response) {
         if (error === null) {
           response['categories'].forEach(function(c) {
             res.send(c);
-            console.log(c);
           });
         }
       });

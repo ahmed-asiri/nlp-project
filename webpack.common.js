@@ -6,10 +6,7 @@ module.exports = {
     entry: "./src/client/index.js",
     module: {
         rules: [
-            {
-                test: /\.scss$/,
-                use: ["style-loader", "css-loader", "sass-loader"]
-            },
+            
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 use: [
@@ -22,7 +19,12 @@ module.exports = {
                     },
                   },
                 ],
-              }
+              },
+              {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            }
         ]
     },
     plugins: [
