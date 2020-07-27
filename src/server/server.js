@@ -21,15 +21,14 @@ var textapi = new aylien({
   });
 
 app.post("/nlp", (req, res) => {
-    textapi.classify({
-        url: req.body.url
-      }, function(error, response) {
-        if (error === null) {
-          response['categories'].forEach(function(c) {
-            res.send(c);
-          });
-        }
-      });
+  textapi.sentiment({
+    'text': req.body.message
+  }, function(error, response) {
+    if (error === null) {
+      console.log(response);
+      res.send(response);
+    }
+  });
 });
 
 

@@ -1,39 +1,29 @@
 import "./assets/css/style.scss";
-import {isValidUrl} from "./js/validate-url";
-import {checkElementExisting} from "./js/exist-element";
+import "./assets/css/footer.scss";
+import "./assets/css/form.scss";
+import "./assets/css/header.scss";
+import "./assets/css/main.scss";
 
+import {isEmptyField} from "./js/is-empty-field";
+import {checkElementExisting} from "./js/exist-element";
+import {getData} from "./js/get-data"
 
 var submitBtn = checkElementExisting("#submit-btn");
-submitBtn.addEventListener("click", function(eve) {
+submitBtn.addEventListener("click", async function(eve) {
     eve.preventDefault();
     if(submitBtn !== null){
-        var url = document.querySelector("#sentence");
-        if(isValidUrl(url.value)){
+        var message = document.querySelector("#sentence");
+        if(!isEmptyField(message.value)){
             //Sending Request to the server.
-            getData(url.value);
+            let data = await getData(message.value);
+            document.querySelector(".result").innerHTML = "<strong>Polarity: </strong>" + data.polarity + "<br>" + "<strong>Subjectivity: </strong>" +data.subjectivity + "<br>" + "<strong>Polarity Confidence: </strong>" +data.polarity_confidence.toFixed(2) + "<br>" + "<strong>Subjectivity Confidence: </strong>" +data.subjectivity_confidence.toFixed(2);
 
         }else {
             //Give him alert that he has problem with the URL.
-            alert("it's not valid URL format, try again!!as");
+            alert("you need to enter sentence please!!");
         }
     }
 });
 
 
-async function getData(URL) {
-    let user = {
-        url: URL
-    };
-    console.log(user);
-    let response = await fetch("./nlp" ,{
-        method: 'post',
-        body: JSON.stringify(user),
-        headers: {
-            "Content-Type": "application/json"
-          }
-      });
-
-    let data = await response.json();
-    document.querySelector(".result").innerHTML = data.label + "<br>" + data.confidence;
-}
 

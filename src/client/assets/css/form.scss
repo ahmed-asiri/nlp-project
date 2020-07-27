@@ -1,0 +1,81 @@
+$info: #33b5e5;
+$danger: #ff4444;
+$purple: #aa66cc;
+$dark: #2e2e2e;
+$font: #fffff8;
+
+form {
+    grid-area: form;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: $dark;
+    color: $font;
+    padding: 5px;
+    input, label {
+        margin: 5px auto;
+        width: 450px;
+    }
+    label {
+        text-align: center;
+    }
+    input:focus, input:active {
+        outline: none;
+    }
+    input[type="text"] {
+        height: 30px;
+    }
+
+    input[type="submit"]{
+        width: 100px;
+        height: 35px;
+        background-color: $info;
+        border: none;
+        color: $font;
+        font-size: 80%;
+        font-family: inherit;
+    }
+ 
+}
+
+
+@media screen and (max-width: 700px){
+
+    form {
+        grid-area: form;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: $dark;
+        color: $font;
+        padding: 5px;
+
+        input, label {
+            margin: 5px auto;
+            width: 90%;
+        }
+        label {
+            text-align: center;
+        }
+        input:focus, input:active {
+            outline: none;
+        }
+        input[type="text"] {
+            height: 30px;
+        }
+    
+        input[type="submit"]{
+            width: 100px;
+            height: 35px;
+            background-color: $info;
+            border: none;
+            color: $font;
+            font-size: 80%;
+            font-family: inherit;
+        }
+     
+    }
+}
